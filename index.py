@@ -21,9 +21,20 @@ def translating(filename):
     file.write(i)
   file.close
 
-for file in os.listdir(path):
-    if file.endswith(".srt"):
-        translating(os.path.join(path, file))
-        print("\nsuccessful "+str(file))
+if(path.endswith(".srt")):
+    try:
+      translating(path)
+      print("\nsuccessful "+str(path))
+    except:
+      print("not translateing !")
+else:
+    for file in os.listdir(path):
+      if file.endswith(".srt"):
+        try:
+          translating(os.path.join(path, file))
+          print("\nsuccessful "+str(file))
+        except:
+          continue
+
 print("\n-------------- done ------------\n")
 
