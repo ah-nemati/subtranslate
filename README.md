@@ -3,7 +3,7 @@ translate subtitles
 ## Installation
 
 ```bash
-pip install googletrans
+pip install googletrans==3.1.0a0
 ```
 ## Usage
 
