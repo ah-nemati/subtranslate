@@ -14,7 +14,10 @@ def translating(filename):
 
   for line in range(len(lines)):
     if re.search('^[0-9]+$', lines[line]) is None and re.search('^[0-9]{2}:[0-9]{2}:[0-9]{2}', lines[line]) is None and re.search('^$', lines[line]) is None:
-      lines[line]=translator.translate(lines[line],dest="fa").text
+      try:
+        lines[line]=translator.translate(lines[line],dest="fa").text
+      except:
+        return lines[line]
 
   file=open(filename,"w")
   for i in lines:
