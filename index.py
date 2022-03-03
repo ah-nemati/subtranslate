@@ -2,6 +2,8 @@ import os
 import sys
 from googletrans import Translator
 import re
+from tqdm import tqdm
+import time
 
 path=sys.argv[1]
 
@@ -12,9 +14,10 @@ def translating(filename):
   lines = file.readlines()
   file.close()
 
-  for line in range(len(lines)):
+  for line in tqdm(range(len(lines))):
     if re.search('^[0-9]+$', lines[line]) is None and re.search('^[0-9]{2}:[0-9]{2}:[0-9]{2}', lines[line]) is None and re.search('^$', lines[line]) is None:
       try:
+        time.sleep(0.1)
         lines[line]=translator.translate(lines[line],dest="fa").text
       except:
         return lines[line]
