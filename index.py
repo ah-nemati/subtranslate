@@ -14,7 +14,7 @@ def translating(filename):
   lines = file.readlines()
   file.close()
 
-  for line in tqdm(range(len(lines))):
+  for line in tqdm(range(len(lines)),colour="green"):
     if re.search('^[0-9]+$', lines[line]) is None and re.search('^[0-9]{2}:[0-9]{2}:[0-9]{2}', lines[line]) is None and re.search('^$', lines[line]) is None:
       time.sleep(0.1)
       lines[line]=translator.translate(lines[line],dest="fa").text
