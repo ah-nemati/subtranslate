@@ -11,16 +11,13 @@ translator=Translator()
 
 def translating(filename):
   file = open( filename, "r")
-  print(file.readable())
   lines = file.readlines()
   file.close()
 
   for line in tqdm(range(len(lines))):
     if re.search('^[0-9]+$', lines[line]) is None and re.search('^[0-9]{2}:[0-9]{2}:[0-9]{2}', lines[line]) is None and re.search('^$', lines[line]) is None:
-      lines[line]=translator.translate(lines[line],dest="fa").text
       time.sleep(0.1)
-    else:
-      return lines[line]
+      lines[line]=translator.translate(lines[line],dest="fa").text
 
   file=open(filename,"w")
   for i in lines:
